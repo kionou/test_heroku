@@ -27,19 +27,19 @@ SET time_zone = "+00:00";
 -- Structure de la table `users`
 --
 
-CREATE TABLE 'users' (
-  'id' int(11) NOT NULL,
-  'nom' varchar(50) NOT NULL,
-  'prenom' varchar(50) NOT NULL,
-  'createAt' date NOT NULL,
-  'updateAt' date NOT NULL
+CREATE TABLE users (
+  id int(11) NOT NULL,
+  nom varchar(50) NOT NULL,
+  prenom varchar(50) NOT NULL,
+  createAt date NOT NULL,
+  updateAt date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO 'users' ('id', 'nom', 'prenom', 'createAt', 'updateAt') VALUES
+INSERT INTO users (id, nom, prenom, createAt, updateAt) VALUES
 (1, 'kionou', 'mamadou', '2022-07-08', '2022-07-08');
 
 --
@@ -49,8 +49,8 @@ INSERT INTO 'users' ('id', 'nom', 'prenom', 'createAt', 'updateAt') VALUES
 --
 -- Index pour la table `users`
 --
-ALTER TABLE 'users'
-  ADD PRIMARY KEY ('id');
+ALTER TABLE users
+  ADD PRIMARY KEY (id);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -59,8 +59,8 @@ ALTER TABLE 'users'
 --
 -- AUTO_INCREMENT pour la table `users`
 --
-ALTER TABLE 'users'
-  MODIFY 'id' int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE users
+  MODIFY  id int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
