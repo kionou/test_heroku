@@ -1,4 +1,5 @@
 var express = require('express');
+const { AfficherUser } = require('../others/requette');
 const dataUser = require('../others/requette');
 var router = express.Router();
 
@@ -7,15 +8,18 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
-router.post('/', function(req, res, next) {
+router.post('/', async function(req, res, next) {
       
-      dataUser.InsertionUser(req.body)
-         .then(success =>{
-             res.send('enregistrer') 
-           })
-         .catch(error =>{
-                    console.log(error);
-                })
+ let user = await  dataUser.InsertionUser(req.body);
+ if (user.success) {
+    let afficher = await dataUser.AfficherUser()
+    res.send(afficher)
+ } else {
+    console.log('error',user.erreur);
+ }
+ 
+     
 });
+
 
 module.exports = router;

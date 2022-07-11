@@ -5,7 +5,7 @@
 -- Dumped from database version 13.7
 -- Dumped by pg_dump version 13.7
 
--- Started on 2022-07-08 08:07:35
+-- Started on 2022-07-11 15:15:25
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -23,25 +23,27 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- TOC entry 201 (class 1259 OID 24580)
--- Name: users; Type: TABLE; Schema: public; Owner: postgres
+-- TOC entry 201 (class 1259 OID 24622)
+-- Name: Users; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.users (
+CREATE TABLE public."Users" (
     id integer NOT NULL,
-    nom character varying(50) NOT NULL,
-    prenom character varying(50) NOT NULL
+    nom character varying(255) NOT NULL,
+    prenom character varying(255) NOT NULL,
+    "createdAt" timestamp with time zone NOT NULL,
+    "updatedAt" timestamp with time zone NOT NULL
 );
 
 
-ALTER TABLE public.users OWNER TO postgres;
+ALTER TABLE public."Users" OWNER TO postgres;
 
 --
--- TOC entry 200 (class 1259 OID 24578)
--- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- TOC entry 200 (class 1259 OID 24620)
+-- Name: Users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.users_id_seq
+CREATE SEQUENCE public."Users_id_seq"
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -50,54 +52,55 @@ CREATE SEQUENCE public.users_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.users_id_seq OWNER TO postgres;
-
---
--- TOC entry 2990 (class 0 OID 0)
--- Dependencies: 200
--- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
-
-
---
--- TOC entry 2850 (class 2604 OID 24583)
--- Name: users id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
-
-
---
--- TOC entry 2984 (class 0 OID 24580)
--- Dependencies: 201
--- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.users (id, nom, prenom) FROM stdin;
-\.
-
+ALTER TABLE public."Users_id_seq" OWNER TO postgres;
 
 --
 -- TOC entry 2991 (class 0 OID 0)
 -- Dependencies: 200
--- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: Users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 1, false);
+ALTER SEQUENCE public."Users_id_seq" OWNED BY public."Users".id;
 
 
 --
--- TOC entry 2852 (class 2606 OID 24585)
--- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2851 (class 2604 OID 24625)
+-- Name: Users id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.users
-    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public."Users" ALTER COLUMN id SET DEFAULT nextval('public."Users_id_seq"'::regclass);
 
 
--- Completed on 2022-07-08 08:07:39
+--
+-- TOC entry 2985 (class 0 OID 24622)
+-- Dependencies: 201
+-- Data for Name: Users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Users" (id, nom, prenom, "createdAt", "updatedAt") FROM stdin;
+1	roman	Kouadio	2022-07-11 15:12:15.536+00	2022-07-11 15:12:15.536+00
+\.
+
+
+--
+-- TOC entry 2992 (class 0 OID 0)
+-- Dependencies: 200
+-- Name: Users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."Users_id_seq"', 1, true);
+
+
+--
+-- TOC entry 2853 (class 2606 OID 24630)
+-- Name: Users Users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Users"
+    ADD CONSTRAINT "Users_pkey" PRIMARY KEY (id);
+
+
+-- Completed on 2022-07-11 15:15:29
 
 --
 -- PostgreSQL database dump complete
