@@ -6,12 +6,12 @@
 //     password:'',
 //     database:'test_heroku'
 // })
-const  Sequelize  = require("sequelize")
+ const  Sequelize  = require("sequelize")
 
-let sequelize = new Sequelize("finance","postgres","Laloi2015",{
+let sequelize = new Sequelize(process.env.DATABASE_URL,{
     dialect:'postgres',
-    host:'localhost',
-    port:'5432'
+    // host:'localhost',
+    // port:'5432'
 })
 
 // const pg = require('pg');
